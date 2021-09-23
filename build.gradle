@@ -1,0 +1,51 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.0.0'
+    id 'org.openjfx.javafxplugin' version '0.0.10'
+    id 'application'
+    id 'net.kyori.blossom' version "1.2.0"
+}
+
+group 'com.hardronix'
+version '1.0.1'
+
+repositories {
+    mavenCentral()
+}
+
+application {
+    mainClassName("com.hardronix.thugproupdatercore.Main")
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': application.mainClassName
+    }
+}
+
+javafx {
+    version = "11.0.2"
+    modules = [ 'javafx.controls' ]
+}
+
+shadowJar {
+    configurations = [project.configurations.compileClasspath]
+    archiveClassifier.set('shaded')
+}
+
+blossom {
+    replaceToken('$VERSION', project.version)
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.0'
+    shadow group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
+    shadow group: 'org.json', name: 'json', version: '20210307'
+    shadow group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.0-rc2'
+    shadow group: 'commons-io', name: 'commons-io', version: '2.11.0'
+}
+
+test {
+    useJUnitPlatform()
+}

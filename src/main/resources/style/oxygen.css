@@ -1,0 +1,151 @@
+@font-face {
+    src: url('font/Sansation_Regular.ttf');
+}
+
+.label {
+    -fx-text-fill: #3ae6ca;
+    -fx-font-family: "Sansation Regular";
+}
+
+#window-title {
+    -fx-text-fill: #abfff1;
+}
+
+#button-activated {
+    -fx-background-color: #fefefe;
+}
+.button {
+    -fx-font-size: 24px;
+    -fx-text-alignment: center;
+    -fx-font-family: "Sansation Regular";
+    -fx-background-color: #242424;
+    -fx-text-fill: #3ae6ca;
+    -fx-background-radius: 0px;
+    -fx-border-radius: 0px;
+    -fx-background-insets: 0px;
+}
+
+.button:hover {
+    -fx-background-color: #282828;
+}
+
+.button:pressed {
+    -fx-background-color: #ffffff;
+}
+
+.check-box .box {
+    -fx-background-color: #242424;
+    -fx-border-radius: 0px;
+    -fx-background-radius: 0px;
+    -fx-pref-height: 24px;
+    -fx-pref-width: 24px;
+}
+
+.check-box:hover .box {
+    -fx-background-color: #282828;
+    -fx-border-radius: 0px;
+    -fx-background-radius: 0px;
+    -fx-pref-height: 24px;
+    -fx-pref-width: 24px;
+}
+
+.check-box {
+    -fx-text-fill: #3ae6ca;
+    -fx-font-size: 24px;
+    -fx-text-alignment: center;
+    -fx-font-family: "Sansation Regular";
+}
+
+.check-box:selected .box {
+    -fx-background-color: #3ae6ca;
+}
+
+.check-box .mark {
+    -fx-background-color: transparent;
+}
+
+.combo-box-base {
+    -fx-background-color: #202020;
+    -fx-background-radius: 0px;
+    -fx-border-radius: 0px;
+    -fx-background-insets: 0px;
+    -fx-font-size: 24px;
+    -fx-text-fill: #3ae6ca;
+    -fx-text-alignment: center;
+    -fx-content-display: center;
+    -fx-alignment: center;
+    -fx-font-family: "Sansation Regular";
+}
+
+.combo-box {
+    -fx-background-radius: 0px;
+    -fx-border-radius: 0px;
+    -fx-background-insets: 0px;
+}
+
+.combo-box .cell:selected {
+    -fx-text-fill: #3ae6ca;
+    -fx-text-alignment: center;
+}
+
+.combo-box .cell {
+    -fx-alignment: center;
+    -fx-pref-height: 40px;
+}
+
+.combo-box .list-view .cell {
+    -fx-background-color: #181818;
+    -fx-text-fill: #3ae6ca;
+    -fx-padding: 0, 0, 0, 50%;
+}
+
+.combo-box .arrow {
+    -fx-background-color: #333333;
+    -fx-pref-width: 16px;
+    -fx-pref-height: 12px;
+    -fx-padding: 0;
+}
+
+.combo-box:hover .arrow {
+    -fx-background-color: #3ae6ca;
+}
+
+.combo-box .list-view .cell:selected {
+    -fx-background-color: #208070;
+}
+
+.combo-box .list-view .cell:hover {
+    -fx-background-color: #242424;
+}
+
+.combo-box .list-view {
+    -fx-background-radius: 0px;
+    -fx-border-radius: 0px;
+    -fx-background-insets: 0px;
+}
+
+.combo-box .combo-box-popup .list-view, .combo-box .combo-box-popup .list-cell {
+    -fx-background-color: #303030;
+}
+
+.progress-bar {
+    -fx-background-radius: 0px;
+    -fx-border-radius: 0px;
+    -fx-accent: #3ae6ca;
+
+    -fx-background-insets: 0, 1;
+    -fx-indeterminate-bar-length: 60;
+    -fx-indeterminate-bar-escape: true;
+    -fx-indeterminate-bar-flip: false;
+    -fx-indeterminate-bar-animation-time: 1;
+}
+
+.progress-bar > .track {
+    -fx-border-radius: 0px;
+    -fx-background-color: #1e1e1e;
+}
+
+.progress-bar > .bar, .progress-bar > .track {
+    -fx-background-insets: 0;
+    -fx-background-radius: 0px;
+}
