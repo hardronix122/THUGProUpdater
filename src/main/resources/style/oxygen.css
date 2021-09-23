@@ -7,6 +7,20 @@
     -fx-font-family: "Sansation Regular";
 }
 
+#close-button {
+    -fx-shape: "M 0 3 L 20 20 L 20 17 L 0 0 M 0 17 L 20 0 L 20 3 L 0 20";
+    -fx-background-color: #3ae6ca;
+    -size: 24;
+    -fx-min-height: -size;
+    -fx-min-width: -size;
+    -fx-max-height: -size;
+    -fx-max-width: -size;
+}
+
+#close-button:hover {
+    -fx-background-color: #fefefe;
+}
+
 #window-title {
     -fx-text-fill: #abfff1;
 }
