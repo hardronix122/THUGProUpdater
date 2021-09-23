@@ -163,9 +163,22 @@ public class DownloadView extends VBox {
 
 		bindNodesToTask(repairTask);
 
-		repairTask.setOnSucceeded(event -> stepProgress.setProgress(1));
+		repairTask.setOnSucceeded(event -> {
+			System.out.println("Finished!");
+
+			title.textProperty().unbind();
+			message.textProperty().unbind();
+			stepProgress.progressProperty().unbind();
+			currentStepProgress.progressProperty().unbind();
+
+			title.setText("Finished!");
+			message.setText("Repair finished!");
+			stepProgress.setProgress(1);
+			currentStepProgress.setProgress(1);
+		});
 
 		repairTask.setOnFailed(event -> {
+
 			title.textProperty().unbind();
 			message.textProperty().unbind();
 			title.setText("Failed to repair :<");
@@ -203,7 +216,10 @@ public class DownloadView extends VBox {
 		bindNodesToTask(postInstallTask);
 
 		postInstallTask.setOnSucceeded(event -> {
+			stepProgress.progressProperty().unbind();
 			stepProgress.setProgress(1);
+
+			title.textProperty().unbind();
 			title.setText("Finished!");
 		});
 

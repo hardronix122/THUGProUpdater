@@ -27,7 +27,6 @@ public class DownloadTask extends Task<Object> {
 		if(update != null) {
 			updateTitle("Downloading data...");
 
-
 			HashMap<String, UpdateFile> allFiles = new HashMap<>();
 			allFiles.putAll(update.getDataFiles());
 			allFiles.putAll(update.getOtherFiles());
@@ -36,7 +35,6 @@ public class DownloadTask extends Task<Object> {
 
 			for(String filename : allFiles.keySet()) {
 				if(this.isCancelled()) {
-					System.out.println("Cancelled!!!!");
 					updateTitle("Cancelled");
 					updateMessage("Download cancelled");
 					break;

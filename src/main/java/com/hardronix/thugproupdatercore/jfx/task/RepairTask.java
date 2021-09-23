@@ -22,43 +22,55 @@ public class RepairTask extends Task<Object> {
 
 	@Override
 	protected Object call() {
-		List<File> invalidFiles = new ArrayList<>();
+		List<String> invalidFiles = new ArrayList<>();
 
 		if(update != null) {
+			updateTitle("Checking files");
+
 			HashMap<String, UpdateFile> allFiles = new HashMap<>();
 
 			allFiles.putAll(update.getDataFiles());
 			allFiles.putAll(update.getOtherFiles());
 
 			for(String filename : allFiles.keySet()) {
+				if(this.isCancelled()) {
+					updateTitle("Cancelled");
+					updateMessage("Repair cancelled");
+					return null;
+				}
+
 				File current = new File(Config.thugProDirectory + "/" + filename);
 				String checksum = allFiles.get(filename).getCrc32Hash();
 
 				if(current.exists() && RepairUtil.hasValidChecksum(current, checksum)) {
 					updateMessage(String.format("%s - ok!%n", filename));
 				} else {
-					invalidFiles.add(current);
+					updateMessage(String.format("%s - bad!%n", filename));
+					invalidFiles.add(filename);
 				}
 			}
 
+			if(invalidFiles.size() > 1) {
+				updateTitle("Repairing");
 
-			if(invalidFiles.size() > 0) {
-				updateMessage("Repairing invalid files...");
+				for(int i = 0; i < invalidFiles.size(); i++) {
+					String filename = invalidFiles.get(i);
 
-				for(String filename : allFiles.keySet()) {
+					if(this.isCancelled()) {
+						updateTitle("Cancelled");
+						updateMessage("Repair cancelled");
+						return null;
+					}
+
 					File current = new File(Config.thugProDirectory + "/" + filename);
 
-					if(invalidFiles.contains(current)) {
-						updateMessage(String.format("Repairing %s...%n", filename));
-
-						UpdateUtil.downloadFile(Config.baseUrl + allFiles.get(filename).getLink(), current);
-
-						updateProgress(getProgress() + 1, invalidFiles.size());
-					}
+					updateMessage(String.format("Repairing %s!%n", filename));
+					updateProgress(i, invalidFiles.size());
+					System.out.println(allFiles.get(filename).getLink());
+					UpdateUtil.downloadFile(Config.baseUrl + allFiles.get(filename).getLink(), current);
 				}
 			}
 		}
-
 
 		return null;
 	}

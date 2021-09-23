@@ -18,13 +18,25 @@ public class RepairUtil {
 		try {
 			Checksum fChecksum = FileUtils.checksum(current, new CRC32());
 
-			return String.format("%X", fChecksum.getValue()).equalsIgnoreCase(checksum);
+			return String.format("%08X", fChecksum.getValue()).equalsIgnoreCase(checksum);
 
 		} catch (IOException e) {
 			System.out.println("Failed to compare!");
 		}
 
 		return true;
+	}
+
+	public static String getFileChecksum(File file) {
+		try {
+			Checksum fChecksum = FileUtils.checksum(file, new CRC32());
+
+			return String.format("%08X", fChecksum.getValue());
+		} catch (IOException e) {
+			System.out.println("Failed to compare!");
+		}
+
+		return null;
 	}
 
 	public static void repairFiles(File directory, List<File> invalidFiles) {

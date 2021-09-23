@@ -35,6 +35,8 @@ public class MainView extends VBox {
 		subContainer.getChildren().add(emptySpace1);
 
 		CheckBox checkBox = new CheckBox("Use test version");
+		checkBox.setSelected(Config.release == Release.TEST);
+
 		checkBox.setPadding(new Insets(0, 0, 0, 0));
 
 		checkBox.setOnAction(e -> {
