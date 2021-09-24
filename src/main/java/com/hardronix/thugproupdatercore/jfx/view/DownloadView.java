@@ -16,11 +16,9 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Paint;
-import javafx.scene.text.Font;
-
-import java.io.InputStream;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 
 public class DownloadView extends VBox {
 	private final ProgressBar currentStepProgress;
@@ -30,12 +28,7 @@ public class DownloadView extends VBox {
 	private Task<?> currentTask;
 
 	public DownloadView(InstallMode installMode) {
-		InputStream is = this.getClass().getResourceAsStream("/style/font/Sansation_Light.ttf");
-		InputStream is2 = this.getClass().getResourceAsStream("/style/font/Sansation_Light.ttf");
-		Font f1 = Font.loadFont(is, 24);
-		Font f2 = Font.loadFont(is2, 12);
-
-		this.setBackground(new Background(new BackgroundFill(Paint.valueOf("#141414"), CornerRadii.EMPTY, Insets.EMPTY)));
+		this.getStyleClass().add("pane");
 		this.setWidth(258);
 		this.setHeight(106);
 		this.getChildren().add(new TitleBar("THUG Pro Updater $VERSION", 258));
@@ -46,7 +39,7 @@ public class DownloadView extends VBox {
 		title = new Label();
 		title.setId("title");
 		title.setMinSize(this.getWidth(), 20);
-		title.setFont(f1);
+		title.setStyle("-fx-font-size: 24px");
 		title.setAlignment(Pos.CENTER);
 		title.setPadding(new Insets(10, 0, 10, 0));
 		title.setPrefWidth(10);
@@ -67,7 +60,6 @@ public class DownloadView extends VBox {
 		currentStepProgress = new ProgressBar();
 		currentStepProgress.setId("current_step_progress");
 		currentStepProgress.setPrefSize(420, 8);
-		//currentStepProgress.setPadding(new Insets(8, 0, 14, 0));
 		currentStepProgress.setProgress(0.75);
 		subContainer.getChildren().add(currentStepProgress);
 
@@ -80,7 +72,7 @@ public class DownloadView extends VBox {
 		message.setId("message");
 		message.setAlignment(Pos.CENTER);
 
-		message.setFont(f2);
+		message.setStyle("-fx-font-size: 12px");
 		message.setMinWidth(this.getWidth());
 		message.setAlignment(Pos.CENTER);
 		message.setPadding(new Insets(8, 0, 8, 0));

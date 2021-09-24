@@ -5,9 +5,7 @@ import com.hardronix.thugproupdatercore.jfx.view.MainView;
 import com.hardronix.thugproupdatercore.jfx.view.PathSelectView;
 import com.hardronix.thugproupdatercore.jfx.view.SceneController;
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -63,7 +61,6 @@ public class FXApp extends Application {
 		primaryStage.setResizable(false);
 
 		primaryStage.show();
-
 	}
 
 	public void run(String[] args) {

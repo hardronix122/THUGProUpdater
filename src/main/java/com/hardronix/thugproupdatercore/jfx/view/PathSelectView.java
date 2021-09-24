@@ -18,7 +18,7 @@ import java.io.File;
 public class PathSelectView extends VBox {
 
 	public PathSelectView() {
-		this.setBackground(new Background(new BackgroundFill(Paint.valueOf("#141414"), CornerRadii.EMPTY, Insets.EMPTY)));
+		this.getStyleClass().add("pane");
 		this.setWidth(260);
 		this.setHeight(106);
 		this.getChildren().add(new TitleBar("THUG Pro Updater $VERSION", 258));

@@ -7,6 +7,10 @@
     -fx-font-family: "Sansation Regular";
 }
 
+.pane {
+    -fx-background-color: #141414;
+}
+
 #close-button {
     -fx-shape: "M 0 3 L 20 20 L 20 17 L 0 0 M 0 17 L 20 0 L 20 3 L 0 20";
     -fx-background-color: #3ae6ca;

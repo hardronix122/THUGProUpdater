@@ -5,6 +5,7 @@ import com.hardronix.thugproupdatercore.console.command.*;
 import com.hardronix.thugproupdatercore.util.UpdateUtil;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -47,15 +48,25 @@ public class Console {
 	private void askPathsIfNecessary() {
 		if(Config.thug2Directory == null || Config.thugProDirectory == null) {
 			System.out.println("First we need to know where THUG Pro and THUG 2 are located :)");
-
+			File thugProDirectory = null;
+			
 			while(Config.thugProDirectory == null) {
-				System.out.println("Enter THUG Pro path:");
-
-				File directory = Paths.get(readLine()).toFile();
+				System.out.println("Enter THUG Pro path or type 'here':");
+				String input = readLine();
+				
+				if(input.equalsIgnoreCase("here")) {
+					try {
+						thugProDirectory = new File(new File(".").getCanonicalPath() + "/THUG Pro");
+					} catch (IOException e) {
+						System.out.println("Failed to get path");
+					}
+				} else {
+					thugProDirectory = Paths.get(input).toFile();
+				}
 
 				try {
-					if(directory != Config.thug2Directory) {
-						Config.thugProDirectory = Paths.get(readLine()).toFile();
+					if(thugProDirectory != null && thugProDirectory != Config.thug2Directory) {
+						Config.thugProDirectory = thugProDirectory;
 						break;
 					}
 				} catch (InvalidPathException | NullPointerException ignored) {
@@ -65,13 +76,14 @@ public class Console {
 			}
 
 			while(Config.thug2Directory == null) {
-				System.out.println("Enter THUG 2 path:");
+				System.out.println("Enter THUG 2 path or type 'here':");
+				String input = readLine();
 
-				File directory = Paths.get(readLine()).toFile();
+				File directory = Paths.get(input).toFile();
 
 				try {
 					if(UpdateUtil.isValidThug2Directory(directory) && Config.thugProDirectory != directory) {
-						Config.thug2Directory = Paths.get(readLine()).toFile();
+						Config.thug2Directory = directory;
 						break;
 					}
 				} catch (InvalidPathException | NullPointerException ignored) {
