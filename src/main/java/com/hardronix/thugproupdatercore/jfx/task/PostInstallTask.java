@@ -5,6 +5,7 @@ import javafx.concurrent.Task;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 public class PostInstallTask extends Task<Object> {
 
@@ -27,7 +28,8 @@ public class PostInstallTask extends Task<Object> {
 
 		Files.copy(
 				Paths.get(installConfig.getThug2Path().getAbsolutePath() + "/binkw32.dll"),
-				Paths.get(installConfig.getPath().getAbsolutePath() + "/binkw32.dll")
+				Paths.get(installConfig.getPath().getAbsolutePath() + "/binkw32.dll"),
+				StandardCopyOption.REPLACE_EXISTING
 		);
 
 		return null;

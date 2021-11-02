@@ -27,6 +27,8 @@
 
 #window-title {
     -fx-text-fill: #abfff1;
+    -fx-font-family: "Sansation Regular";
+    -fx-font-size: 24px;
 }
 
 #button-activated {

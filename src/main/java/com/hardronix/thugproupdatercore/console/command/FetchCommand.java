@@ -29,7 +29,6 @@ public class FetchCommand extends Command {
 
 		try {
 			CloseableHttpClient httpClient = HttpClients.createDefault();
-
 			Version version = UpdateUtil.getVersion(Config.release);
 
 			if(version != null) {

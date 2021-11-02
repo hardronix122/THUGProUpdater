@@ -26,7 +26,7 @@ public class Config {
 			try {
 				JSONObject configObject = new JSONObject(Files.readString(Paths.get(CONFIG_FILE)));
 
-				baseUrl = configObject.has("base_url") ? configObject.getString("base_url") : "http://dl.thugpro.com";
+				baseUrl = configObject.has("base_url") ? configObject.getString("base_url") : baseUrl;
 				thugProDirectory = configObject.has("thug_pro_directory") ? new File(configObject.getString("thug_pro_directory")) : null;
 				thug2Directory = configObject.has("thug_2_directory") ? new File(configObject.getString("thug_2_directory")) : null;
 				release = configObject.has("release") ? configObject.getEnum(Release.class, "release") : Release.CURRENT;

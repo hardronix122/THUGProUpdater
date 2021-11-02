@@ -8,7 +8,6 @@ public class Main {
 	public static void main(String[] args) {
 		System.out.println("THUG Pro Updater $VERSION by Hardronix");
 
-
 		Config.loadConfig();
 
 		if(args.length >= 1 && args[0].equals("--nogui")) {

@@ -25,6 +25,7 @@ public class DownloadView extends VBox {
 	private final ProgressBar stepProgress;
 	private final Label title;
 	private final Label message;
+	private final Button cancelButton;
 	private Task<?> currentTask;
 
 	public DownloadView(InstallMode installMode) {
@@ -79,7 +80,7 @@ public class DownloadView extends VBox {
 
 		subContainer.getChildren().add(message);
 
-		Button cancelButton = new Button("Cancel");
+		cancelButton = new Button("Cancel");
 		cancelButton.setId("cancel_button");
 		cancelButton.setPrefSize(160, 40);
 		cancelButton.setOnAction(event -> currentTask.cancel());
@@ -104,7 +105,7 @@ public class DownloadView extends VBox {
 			Update update = fetchUpdateTask.getValue();
 
 			InstallConfig installConfig = new InstallConfig(
-					update.getVersion(),
+					update,
 					Config.thugProDirectory,
 					Config.thug2Directory,
 					installMode,
@@ -165,6 +166,7 @@ public class DownloadView extends VBox {
 
 			title.setText("Finished!");
 			message.setText("Repair finished!");
+			cancelButton.setVisible(false);
 			stepProgress.setProgress(1);
 			currentStepProgress.setProgress(1);
 		});

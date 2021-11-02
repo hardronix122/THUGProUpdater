@@ -4,38 +4,38 @@ import java.io.File;
 
 public class InstallConfig {
 
-	final Version version;
+	private final Update update;
 	private final File path;
 	private final File thug2Path;
 	private final InstallMode downloadMode;
 	private final Release release;
 
-	public InstallConfig(Version version, File path, File thug2path, InstallMode downloadMode, Release release) {
-		this.version = version;
+	public InstallConfig(Update update, File path, File thug2path, InstallMode downloadMode, Release release) {
+		this.update = update;
 		this.path = path;
 		this.thug2Path = thug2path;
 		this.downloadMode = downloadMode;
 		this.release = release;
 	}
 
-	public InstallConfig(Version version, File path, File thug2path, InstallMode downloadMode) {
-		this.version = version;
+	public InstallConfig(Update update, File path, File thug2path, InstallMode downloadMode) {
+		this.update = update;
 		this.path = path;
 		this.thug2Path = thug2path;
 		this.downloadMode = downloadMode;
 		this.release = Release.CURRENT;
 	}
 
-	public InstallConfig(Version version, File path, InstallMode downloadMode) {
-		this.version = version;
+	public InstallConfig(Update update, File path, InstallMode downloadMode) {
+		this.update = update;
 		this.path = path;
 		this.thug2Path = null;
 		this.downloadMode = downloadMode;
 		this.release = Release.CURRENT;
 	}
 
-	public Version getVersion() {
-		return version;
+	public Update getUpdate() {
+		return update;
 	}
 
 	public File getPath() {

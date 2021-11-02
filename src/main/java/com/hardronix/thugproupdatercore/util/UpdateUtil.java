@@ -11,8 +11,6 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
 import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.HashMap;
 
 public class UpdateUtil {
@@ -65,15 +63,14 @@ public class UpdateUtil {
 
 		System.out.println("Fetching update data...");
 
-		Update update = UpdateUtil.fetchUpdate(dlConfig.getRelease());
+		if(dlConfig.getUpdate() != null) {
+			System.out.printf("Fetched, got %s files!%n", dlConfig.getUpdate().getDataFiles().size() + dlConfig.getUpdate().getOtherFiles().size());
 
-		if(update != null) {
-			System.out.printf("Fetched, got %s files!%n", update.getDataFiles().size() + update.getOtherFiles().size());
 			System.out.println("Downloading Data...");
 
 			HashMap<String, UpdateFile> allFiles = new HashMap<>();
-			allFiles.putAll(update.getDataFiles());
-			allFiles.putAll(update.getOtherFiles());
+			allFiles.putAll(dlConfig.getUpdate().getDataFiles());
+			allFiles.putAll(dlConfig.getUpdate().getOtherFiles());
 
 			for(String filename : allFiles.keySet()) {
 				System.out.printf("Downloading %s...%n", filename);

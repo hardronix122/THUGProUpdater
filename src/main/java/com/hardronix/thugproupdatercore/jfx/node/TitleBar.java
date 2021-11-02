@@ -33,9 +33,6 @@ public class TitleBar extends StackPane {
 		Label label = new Label(title);
 		label.setAlignment(Pos.CENTER);
 		label.setMinSize(width, 48);
-
-		InputStream is = this.getClass().getResourceAsStream("/style/font/Sansation_Light.ttf");
-		label.setFont(Font.loadFont(is, 24));
 		label.setId("window-title");
 
 		this.getChildren().add(label);
